@@ -58,16 +58,6 @@ class HomeController < ApplicationController
               redirect_to root_path
             end
           end
-
-          puts "#{track_number}"
-          puts "#{product}"
-          puts "#{service}"
-          puts "#{status}"
-
-          puts "#{receptor_key}"
-          puts "#{date}"
-          puts "#{hour}"
-          puts "#{receptor_name}"
         else
           redirect_to root_path
         end
