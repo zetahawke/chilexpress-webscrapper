@@ -1,0 +1,22 @@
+<!-- Modal Structure -->
+<div id="login_modal" class="modal bottom-sheet red darken-1">
+  <div class="modal-content">
+    <div class="sign-user z-depth-1 white center-align">
+      <h2>Ingresar</h2>
+
+      <%= form_for(:user, :url => session_path(:user)) do |f| %>
+        <%= f.label :username, style: "font-size: 14px;" %>
+        <%= f.text_field :username, placeholder: "ingresa tu username" %>
+        <%= f.label :password, style: "font-size: 14px;" %>
+        <%= f.password_field :password, placeholder: "ingresa tu password" %>
+        <br>
+        <%= f.submit 'Ingresar', class: "waves-effect waves-light btn" %>
+      <% end %>
+    </div>
+
+
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
+  </div>
+</div>

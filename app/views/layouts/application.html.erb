@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MvpShipit</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="navbar-fixed z-depth-1">
+      <nav>
+        <div class="nav-wrapper">
+          <a href="#!" class="brand-logo">MVP-GOSHIPIT</a>
+          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+          <ul class="right hide-on-med-and-down">
+            <% if current_user.blank? %>
+              <li><a href="#login_modal" class="modal-trigger"><i class="material-icons right">power_settings_new</i></a></li>
+              <li><a href="#registration_modal" class="modal-trigger"><i class="material-icons right">create</i></a></li>
+            <% else %>
+              <li>
+                <%= link_to destroy_user_session_path, method: "delete" do%>
+                  <i class="material-icons right">power_settings_new</i>Bienvenido <%= current_user.username %>
+                <%end%>
+              </li>
+            <% end %>
+          </ul>
+          <ul class="side-nav" id="mobile-demo">
+            <% if current_user.blank? %>
+              <li><a href="#login_modal" class="modal-trigger">Ingresar</a></li>
+              <li><a href="#registration_modal" class="modal-trigger">Registrarse</a></li>
+            <% else %>
+              <li>
+                <%= link_to destroy_user_session_path, method: "delete" do%>
+                  Bienvenido <%= current_user.username %>
+                <%end%>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="row">
+      <div class="container">
+        <%= render 'layouts/messages' %>
+      </div>
+    </div>
+
+    <%= yield %>
+
+
+    <footer class="page-footer">
+      <div class="container">
+        <div class="row">
+  <!--         <div class="col l6 s12">
+            <h5 class="white-text">Footer Content</h5>
+            <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+          </div> -->
+          <div class="col l4 offset-l2 s12">
+            <h5 class="white-text">Enlaces de interés</h5>
+            <ul>
+              <li><a class="grey-text text-lighten-3" href="http://www.goshipit.co/">GOSHIPIT website</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+        © 2016 GOSHIPIT & Zetahawke Copyright
+        <a class="grey-text text-lighten-4 right" href="#!">sitio fabricado por <strong>Zetahawke</strong> </a>
+        </div>
+      </div>
+    </footer>
+    <%= render 'layouts/register'%>
+    <%= render 'layouts/login'%>
+
+  </body>
+</html>
